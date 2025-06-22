@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>CastelaSoft - Sistema de Automatización Inteligente</title>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="CastelaSoft">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="CastelaSoft">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik05NiA0OEM3My45MDg2IDQ4IDU2IDY1LjkwODYgNTYgODhWMTQ0QzU2IDE2Ni4wOTEgNzMuOTA4NiAxODQgOTYgMTg0QzExOC4wOTEgMTg0IDEzNiAxNjYuMDkxIDEzNiAxNDRWODhDMTM2IDY1LjkwODYgMTE4LjA5MSA0OCA5NiA0OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04OCA3MkgxMDRWMTM2SDg4VjcyWiIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNODggMTQ0SDEwNFYxNjBIOThDOTIuNDc3MiAxNjAgODggMTU1LjUyMyA4OCAxNTBWMTQ0WiIgZmlsbD0iIzI1NjNlYiIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAiIHkxPSIwIiB4Mj0iMTkyIiB5Mj0iMTkyIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiM2NjdlZWEiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzY0YmEyIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+">
+    <link rel="apple-touch-icon" sizes="152x152" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUyIiBoZWlnaHQ9IjE1MiIgdmlld0JveD0iMCAwIDE1MiAxNTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTIiIGhlaWdodD0iMTUyIiByeD0iMjgiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik03NiAzOEM1OC4zMjg5IDM4IDQ0IDUyLjMyODkgNDQgNzRWMzhINzZDMzYuOTU0MyAzOCAyOCA0Ni45NTQzIDI4IDU0SDc2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTk0IDU0SDEwNFY4MEg5NFY1NFoiIGZpbGw9IiMyNTYzZWIiLz4KPHBhdGggZD0iTTc2IDgwSDg2VjY2SDc2QzczLjc5MDkgNjYgNzIgNjQuMjA5MSA3MiA2MlY4MFoiIGZpbGw9IiMyNTYzZWIiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwIiB5MT0iMCIgeDI9IjE1MiIgeTI9IjE1MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNjY3ZWVhIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc2NGJhMiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==">
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjgiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik05MCA0NUM3Mi4zMjg5IDQ1IDU4IDU5LjMyODkgNTggNzdWNDVINjRDMzYuOTU0MyA0NSAyOCA1My45NTQzIDI4IDYxSDkwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTExMCA2MUgxMjBWODdIMTEwVjYxWiIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNOTAgODdIMTAwVjczSDkwQzg3Ljc5MDkgNzMgODYgNzEuMjA5MSA4NiA2OVY4N1oiIGZpbGw9IiMyNTYzZWIiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwIiB5MT0iMCIgeDI9IjE4MCIgeTI9IjE4MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNjY3ZWVhIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc2NGJhMiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileImage" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjE0NCIgdmlld0JveD0iMCAwIDE0NCAxNDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNDQiIGhlaWdodD0iMTQ0IiByeD0iMjgiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik03MiAzNkM1NC4zMjg5IDM2IDQwIDUwLjMyODkgNDAgNzJWMzZINzJDMzIuOTU0MyAzNiAyNCA0NC45NTQzIDI0IDUySDcyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTg5IDUySDk5Vjc4SDg5VjUyWiIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNNzIgNzhIODJWNjRINzJDNjkuNzkwOSA2NCA2OCA2Mi4yMDkxIDY4IDYwVjc4WiIgZmlsbD0iIzI1NjNlYiIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAiIHkxPSIwIiB4Mj0iMTQ0IiB5Mj0iMTQ0IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiM2NjdlZWEiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzY0YmEyIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Software Avanzado para la Automatización Inteligente de los Procesos de Casos Especiales de la U.A.G.R.M. - CastelaSoft">
+    <meta name="keywords" content="automatización, inteligencia artificial, UAGRM, casos especiales, CastelaSoft, software">
+    <meta name="author" content="CastelaSoft">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CastelaSoft - Sistema de Automatización Inteligente">
+    <meta property="og:description" content="Software Avanzado para la Automatización Inteligente de los Procesos de Casos Especiales">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="./">
+    <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSI2MDAiIHk9IjMxNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQ4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q2FzdGVsYVNvZnQ8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iMzc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TaXN0ZW1hIGRlIEF1dG9tYXRpemFjacOzbjwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwIiB5MT0iMCIgeDI9IjEyMDAiIHkyPSI2MzAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY2N2VlYSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=">
+    <meta property="og:site_name" content="CastelaSoft">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CastelaSoft - Sistema de Automatización Inteligente">
+    <meta name="twitter:description" content="Software Avanzado para la Automatización Inteligente de los Procesos de Casos Especiales">
+    <meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSI2MDAiIHk9IjMxNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQ4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q2FzdGVsYVNvZnQ8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iMzc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TaXN0ZW1hIGRlIEF1dG9tYXRpemFjacOzbjwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwIiB5MT0iMCIgeDI9IjEyMDAiIHkyPSI2MzAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY2N2VlYSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="manifest.json" as="fetch" crossorigin>
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+</head>
+<body>
+    <div id="install-prompt" class="install-prompt">
+        <div class="install-prompt-content">
+            <div class="install-prompt-text">
+                <h4>Instalar CastelaSoft</h4>
+                <p>Accede rápidamente desde tu pantalla de inicio.</p>
+            </div>
+            <div class="install-prompt-buttons">
+                <button class="install-btn primary" id="install-button">Instalar</button>
+                <button class="install-btn secondary" id="later-button">Más tarde</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="offline-indicator" class="offline-indicator" style="display: none;">
+        <i class="fas fa-wifi-slash"></i>
+        <span>Modo sin conexión. Contenido disponible offline.</span>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>CastelaSoft</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#suscripciones">Suscripciones</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Software Avanzado para la 
+                    <span class="highlight">Automatización Inteligente</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Optimiza los procesos de casos especiales mediante Inteligencia Artificial 
+                    para la Facultad de Ingeniería en Ciencias de la Computación y Telecomunicaciones 
+                    de la U.A.G.R.M.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="demo-button">
+                        <i class="fas fa-play"></i>
+                        Ver Demo
+                    </button>
+                    <button class="btn btn-secondary" id="download-button">
+                        <i class="fas fa-download"></i>
+                        Descargar
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="ai-animation">
+                    <div class="neural-network">
+                        <div class="node"></div>
+                        <div class="node"></div>
+                        <div class="node"></div>
+                        <div class="node"></div>
+                        <div class="node"></div>
+                        <div class="node"></div>
+                        <div class="connection"></div>
+                        <div class="connection"></div>
+                        <div class="connection"></div>
+                        <div class="connection"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="caracteristicas" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Características Principales</h2>
+                <p>Descubre las capacidades avanzadas de nuestro sistema</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Algoritmos de machine learning para análisis inteligente de casos especiales</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Automatización Completa</h3>
+                    <p>Procesamiento automático de documentos y casos con mínima intervención humana</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Análisis Predictivo</h3>
+                    <p>Predicción de resultados y tendencias basadas en datos históricos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Avanzada</h3>
+                    <p>Protección de datos con encriptación y protocolos de seguridad</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Interfaz Intuitiva</h3>
+                    <p>Diseño centrado en el usuario para facilitar la adopción</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Integración Total</h3>
+                    <p>Compatibilidad con sistemas existentes de la facultad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Beneficios para la Facultad</h2>
+                <p>Transforma la gestión de casos especiales</p>
+            </div>
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Reducción del 70% en Tiempo de Procesamiento</h3>
+                            <p>Automatiza tareas repetitivas y acelera la resolución de casos</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Precisión del 95% en Análisis</h3>
+                            <p>Minimiza errores humanos con algoritmos de IA avanzados</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Reportes Automáticos</h3>
+                            <p>Genera informes detallados y estadísticas en tiempo real</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-visual">
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">70%</div>
+                            <div class="stat-label">Menos Tiempo</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Precisión</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Disponibilidad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="suscripciones" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planes de Suscripción</h2>
+                <p>Elige el plan que mejor se adapte a tus necesidades.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Básico</h3>
+                        <p class="price">$2 <span>/ mes</span></p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Automatización de 100 casos/mes</li>
+                        <li><i class="fas fa-check"></i> Soporte por email</li>
+                        <li><i class="fas fa-check"></i> Reportes básicos</li>
+                        <li><i class="fas fa-times"></i> Análisis predictivo</li>
+                    </ul>
+                    <button class="btn btn-secondary">Suscribirse</button>
+                </div>
+                <!-- Premium Plan -->
+                <div class="pricing-card highlight">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <p class="price">$10 <span>/ mes</span></p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Casos ilimitados</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+                        <li><i class="fas fa-check"></i> Reportes avanzados</li>
+                        <li><i class="fas fa-check"></i> Análisis predictivo</li>
+                    </ul>
+                    <button class="btn btn-primary">Suscribirse</button>
+                </div>
+                <!-- Educational Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Educativo</h3>
+                        <p class="price">$0 <span>/ mes</span></p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Para estudiantes y docentes</li>
+                        <li><i class="fas fa-check"></i> Funcionalidades Premium</li>
+                        <li><i class="fas fa-check"></i> Requiere validación académica</li>
+                        <li><i class="fas fa-check"></i> Comunidad exclusiva</li>
+                    </ul>
+                    <button class="btn btn-secondary">Obtener gratis</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contacto</h2>
+                <p>¿Tienes preguntas sobre nuestro sistema?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <div>
+                            <h4>U.A.G.R.M.</h4>
+                            <p>Facultad de Ingeniería en Ciencias de la Computación y Telecomunicaciones</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>automatizacion@uagrm.edu.bo</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+591 3 336-XXXX</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Asunto" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-robot"></i>
+                        <span>CastelaSoft</span>
+                    </div>
+                    <p>Sistema de Automatización Inteligente para la U.A.G.R.M.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#caracteristicas">Características</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#suscripciones">Suscripciones</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CastelaSoft - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
