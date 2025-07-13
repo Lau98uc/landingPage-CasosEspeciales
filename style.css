@@ -909,3 +909,126 @@ html {
 .pricing-card .btn {
     width: 100%;
 }
+
+/* --- Kevin Chatbot Styles --- */
+.kevin-chatbot-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    background: #2563eb;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.kevin-chatbot-button:hover {
+    box-shadow: 0 8px 24px rgba(37,99,235,0.25);
+}
+.kevin-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    background: #fff;
+}
+.kevin-chatbot-window {
+    position: fixed;
+    bottom: 100px;
+    right: 32px;
+    width: 340px;
+    max-width: 95vw;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+.kevin-chatbot-header {
+    display: flex;
+    align-items: center;
+    background: #2563eb;
+    color: #fff;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+.kevin-chatbot-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-left: 12px;
+    flex: 1;
+}
+.kevin-chatbot-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 8px;
+}
+.kevin-chatbot-body {
+    padding: 16px;
+    background: #f8fafc;
+    min-height: 180px;
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.kevin-message {
+    background: #e0e7ff;
+    color: #1e293b;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 4px;
+    max-width: 90%;
+    font-size: 1rem;
+}
+.kevin-message-bot {
+    align-self: flex-start;
+    background: #e0e7ff;
+}
+.kevin-message-user {
+    align-self: flex-end;
+    background: #2563eb;
+    color: #fff;
+}
+.kevin-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.kevin-option {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.kevin-option:hover {
+    background: #1741a6;
+}
+@media (max-width: 500px) {
+    .kevin-chatbot-window {
+        right: 8px;
+        width: 98vw;
+        min-width: unset;
+    }
+    .kevin-chatbot-button {
+        right: 8px;
+        bottom: 8px;
+    }
+}

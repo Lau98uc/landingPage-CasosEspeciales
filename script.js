@@ -445,3 +445,91 @@ function clearCache() {
 window.installApp = installApp;
 window.hideInstallPrompt = hideInstallPrompt;
 window.clearCache = clearCache;
+
+// --- Kevin Chatbot Logic ---
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('kevin-chatbot-button');
+    const windowEl = document.getElementById('kevin-chatbot-window');
+    const closeBtn = document.getElementById('kevin-chatbot-close');
+    const options = document.getElementById('kevin-options');
+    const body = document.getElementById('kevin-chatbot-body');
+
+    if (!btn || !windowEl) return;
+
+    btn.addEventListener('click', () => {
+        windowEl.style.display = 'flex';
+        btn.style.display = 'none';
+    });
+    closeBtn.addEventListener('click', () => {
+        windowEl.style.display = 'none';
+        btn.style.display = 'flex';
+        resetChat();
+    });
+
+    options.addEventListener('click', function(e) {
+        if (e.target.classList.contains('kevin-option')) {
+            const opt = e.target.getAttribute('data-option');
+            handleOption(opt);
+        }
+    });
+
+    function handleOption(opt) {
+        let msg = '';
+        if (opt === 'login') {
+            msg = `<b>¿Cómo iniciar sesión?</b><br>\
+1. Selecciona tu carrera en el menú desplegable.<br>\
+2. Ingresa tu registro universitario.<br>\
+3. Escribe tu contraseña (si es tu primera vez, crea una nueva).<br>\
+4. Haz clic en <b>Iniciar Sesión</b>.<br>\
+¡Listo! Accederás al panel principal.`;
+        } else if (opt === 'solicitud') {
+            msg = `<b>¿Cómo solicitar un caso especial?</b><br>\
+1. Inicia sesión en el sistema.<br>\
+2. Ve al menú <b>Solicitud Caso Especial</b>.<br>\
+3. Completa el formulario con los datos requeridos.<br>\
+4. Los documentos necesarios ya se encuentran en el sistema.<br>\
+5. Envía tu solicitud y espera la confirmación.`;
+        } else if (opt === 'estado') {
+            msg = `<b>¿Cómo ver el estado de mi solicitud?</b><br>\
+1. Inicia sesión y accede al panel.<br>\
+2. Haz clic en <b>Procesos Estados</b> en el menú lateral.<br>\
+3. Verás el listado y estado de tus solicitudes.<br>\
+Puedes consultar detalles y notificaciones aquí.`;
+        } else if (opt === 'soporte') {
+            msg = `<b>¿Cómo contactar soporte?</b><br>\
+Puedes escribirnos al correo <b>ugartelaura3@gmail.com</b> o usar la sección de <b>Contacto</b> en la página principal.<br>\
+¡Kevin siempre está para ayudarte!`;
+        }
+        showBotMessage(msg);
+        showBackToMenu();
+    }
+
+    function showBotMessage(msg) {
+        const div = document.createElement('div');
+        div.className = 'kevin-message kevin-message-bot';
+        div.innerHTML = msg;
+        body.appendChild(div);
+        options.style.display = 'none';
+        body.scrollTop = body.scrollHeight;
+    }
+    function showBackToMenu() {
+        let backBtn = document.createElement('button');
+        backBtn.className = 'kevin-option';
+        backBtn.textContent = 'Volver al menú principal';
+        backBtn.onclick = function() {
+            resetChat();
+        };
+        let wrap = document.createElement('div');
+        wrap.className = 'kevin-options';
+        wrap.appendChild(backBtn);
+        body.appendChild(wrap);
+        body.scrollTop = body.scrollHeight;
+    }
+    function resetChat() {
+        // Remove all except the first bot message and options
+        while (body.children.length > 2) {
+            body.removeChild(body.lastChild);
+        }
+        options.style.display = 'flex';
+    }
+});
